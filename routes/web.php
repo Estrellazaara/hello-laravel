@@ -1,19 +1,38 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Universe;
+use App\Models\Superheroe;
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
-
-Route::get('/superheroes', function () {
-    return view('superheroes');
-});
-
+// Universes
 Route::get('/universes', function () {
-    return view('universes');
+    return response()->json([
+        'status' => true,
+        'universes' => Universe::all()
+    ]);
 });
 
-Route::get('/superpowers', function () {
-    return view('superpowers');
+// Superheroes
+Route::get('/superheroes', function () {
+    return response()->json([
+        'status' => true,
+        'superheroes' => Superheroe::all()
+    ]);
 });
+
+
+#Route::get('/welcome', function () {
+#    return view('welcome');
+#});
+
+#Route::get('/superheroes', function () {
+#    return view('superheroes1');
+#});
+
+#Route::get('/universes', function () {
+ #   return view('universes1');
+#});
+
+#Route::get('/superpowers', function () {
+#    return view('superpowers');
+#});
