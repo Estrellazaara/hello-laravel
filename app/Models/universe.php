@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class universe extends Model
+class Universe extends Model
 {
     use HasFactory;
 
@@ -14,5 +14,9 @@ class universe extends Model
         'company',
         'age',
     ]; 
-        
+
+    public function superheroes()
+{
+    return $this->hasMany(Superheroe::class,'Universe_id');
 }
+    }
