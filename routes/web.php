@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UniverseController;
-use App\Models\Superhero;
+use App\Http\Controllers\SuperheroeController;
+//use App\Models\SuperheroeController;
 
 Route::get('/', function () {
 
@@ -18,4 +19,6 @@ Route::get('/', function () {
 
 //Route::get('/universes', [UniverseController::class, 'index']);
 
-Route::resource('/universes', UniverseController::class);
+Route::resource('universes', UniverseController::class);
+
+Route::resource('superheroes', SuperheroeController::class);

@@ -22,7 +22,7 @@
         @foreach ($universes as $universe)
             <tr>
                 <td>{{ $universe->id }}</td>
-                <td>{{ $universe->name }}</td>
+                <td>{{ $universe->universe}}</td>
                 <td>{{ $universe->company }}</td>
                 <td>{{ $universe->age }}</td>
             </tr>

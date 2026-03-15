@@ -12,7 +12,7 @@ class Superheroe extends Model
          'name',
          'real_name',
          'gender',
-        'Universe_id'
+        'universe_id'
          ]; 
 
     public function universe()
