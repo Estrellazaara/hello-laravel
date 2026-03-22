@@ -16,7 +16,7 @@ class Universe extends Model
     ]; 
 
     public function superheroes()
-{
-    return $this->hasMany(Superheroe::class,'Universe_id');
-}
+    {
+        return $this->hasMany(Superheroe::class,'Universe_id');
+    }
     }

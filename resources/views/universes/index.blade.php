@@ -8,13 +8,22 @@
 </head>
 <body>
    {{-- <p> {{ $universes }} </p>--}}
+
+   <h1>All Universes</h1>
+
+   <br>
+
+    <a href="{{ route('universes.create') }}">Create Universe</a>
+
+    <br><br> 
+
     <table>
     <thead>
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Company</th>
-            <th>Age</th>
+            <th>Actions</th>
         </tr>
     </thead>
 
@@ -24,10 +33,11 @@
                 <td>{{ $universe->id }}</td>
                 <td>{{ $universe->universe}}</td>
                 <td>{{ $universe->company }}</td>
-                <td>{{ $universe->age }}</td>
+                <td>
+                    <a href="{{ route('universes.show', $universe->id) }}">Ver detalles</a>
+                </td>
             </tr>
-        @endforeach
-    </tbody>
-</table>
-</body>
+             @endforeach
+        </tbody>
+    </body>
 </html>

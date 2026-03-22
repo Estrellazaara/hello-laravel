@@ -49,15 +49,18 @@ class SuperheroeController
      */
     public function show(string $id)
     {
-        //
+        $superheroe = Superheroe::findOrFail($id);
+        return view('superheroes.show', compact('superheroe'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $superheroe = Superheroe::findOrFail($id);
+        return view('superheroes.edit', compact('superheroe'));
     }
 
     /**
@@ -65,14 +68,33 @@ class SuperheroeController
      */
     public function update(Request $request, string $id)
     {
-        //
+        //add ($request);
+        $superheroe = Superheroe::findOrFail($id);
+        $superheroe->update([
+            'name' => $request->name,
+            'real_name' => $request->real_name,
+            'gender' => $request->gender,
+            'universe_id' => $request->universe_id
+        ]);
+        
+        return redirect()->route('superheroes.show', $superheroe->id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+     public function destroy(string $id)
     {
-        //
+        $superheroe = Superheroe::findOrFail($id);
+
+        $superheroe->delete();
+        return redirect()->route('superheroes.index');
+
+        foreach ($super as $super) {
+            $super->delete();
+        }
+       
+        $superheroe->delete();
+        return redirect()->route('superheroes.index');
     }
 }

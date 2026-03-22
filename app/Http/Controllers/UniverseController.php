@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Universe;
+use App\Models\Superheroe;
 
 use Illuminate\Http\Request;
 
@@ -44,7 +45,8 @@ class UniverseController
      */
     public function show(string $id)
     {
-        //
+        $universes = Universe::findOrFail($id);
+        return view('universes.show', compact('universes'));
     }
 
     /**
@@ -52,7 +54,8 @@ class UniverseController
      */
     public function edit(string $id)
     {
-        //
+        $universe = Universe::findOrFail($id);
+        return view('universes.edit', compact('universe'));
     }
 
     /**
@@ -60,7 +63,15 @@ class UniverseController
      */
     public function update(Request $request, string $id)
     {
-        //
+        //add ($request);
+        $universe = Universe::findOrFail($id);
+        $universe->update([
+            'universe' => $request->universe,
+            'company' => $request->company,
+            'age' => $request->age
+        ]);
+        
+        return redirect()->route('universes.show', $universe->id);
     }
 
     /**
@@ -68,6 +79,15 @@ class UniverseController
      */
     public function destroy(string $id)
     {
-        //
+        $universe = Universe::findOrFail($id);
+
+        $super = Superheroe::where('universe_id', $id)->delete();
+
+        foreach ($super as $super) {
+            $super->delete();
+        }
+       
+        $universe->delete();
+        return redirect()->route('universes.index');
     }
 }
